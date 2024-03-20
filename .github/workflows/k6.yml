@@ -1,4 +1,5 @@
 name: Teste de Performance com K6
+
 on:
   push:
     branches:
@@ -20,6 +21,9 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Instalar K6
+      run: npm install k6@latest
+      
     - name: Instalar dependências
       run: npm install
     
