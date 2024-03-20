@@ -1,0 +1,27 @@
+name: Teste de Performance com K6
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+      
+    - name: Configuração do Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Instalar dependências
+      run: npm install
+    
+    - name: Executar Teste de Performance com K6
+      run: npx k6 run script.js
